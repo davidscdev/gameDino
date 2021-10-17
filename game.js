@@ -50,7 +50,7 @@ function criaCactus() {
 
     let andaCactus = setInterval(() => {
 
-        if (cactusPosition <= 60) {
+        if (cactusPosition <= 0) {
             clearInterval(andaCactus);
             background.removeChild(cactus);
         } else if (cactusPosition > 0 && cactusPosition <= 60 && position < 60) {
