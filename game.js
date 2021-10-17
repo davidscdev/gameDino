@@ -1,7 +1,14 @@
 const dino = document.querySelector(".dino");
 const background = document.querySelector(".bg");
+const score = document.querySelector('.score');
+
 let position = 0;
 let taPulando = false;
+let pontos = 0;
+let timerPontuacao = setInterval(() => {
+    pontos++;
+    score.innerHTML = `Sua pontuação é : ${pontos}.`
+}, 10);
 
 function verificaEspaco(event) {
     if (event.keyCode === 32) {
@@ -55,7 +62,8 @@ function criaCactus() {
             background.removeChild(cactus);
         } else if (cactusPosition > 0 && cactusPosition <= 60 && position < 60) {
             clearInterval(andaCactus);
-            document.body.innerHTML = '<h1>FIM DE JOGO</h1>';
+            clearInterval(timerPontuacao);
+            document.body.innerHTML = `<h1>FIM DE JOGO</h1> <p>Pontuação: ${pontos}</p>`;
         } else {
             cactusPosition -= 10;
             cactus.style.left = cactusPosition + 'px';
